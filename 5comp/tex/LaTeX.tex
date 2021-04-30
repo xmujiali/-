@@ -1,0 +1,135 @@
+\chapter{on \LaTeX}
+
+\section{\LaTeX{}基本命令}
+
+\subsection{使用\LaTeX{}抄录代码}
+抄录代码可以使用lstlisting环境，抄录C代码的办法如下：
+\begin{verbatim}
+\begin{lstlisting}[language=C]
+int main(int argc, char ** argv)
+{
+printf("Hello world!\n");
+return 0;
+}
+\end{lstlisting}
+\end{verbatim}
+
+\noindent{}其显示效果如下：
+\begin{lstlisting}[language=C]
+int main(int argc, char ** argv)
+{
+printf("Hello world!\n");
+return 0;
+}
+\end{lstlisting}
+
+
+\noindent{}抄录Python如下：
+\begin{verbatim}
+\begin{lstlisting}[language=Python]
+from pyx import *
+g = graph.graphxy(width=8)
+g.plot(graph.data.function("y(x)=sin(x)/x", min=-15, max=15))
+g.writePDFfile("function")
+print r'\includegraphics{function}'
+\end{lstlisting}
+\end{verbatim}
+
+\noindent{}其显示效果如下：
+\begin{lstlisting}[language=Python]
+from pyx import *
+g = graph.graphxy(width=8)
+g.plot(graph.data.function("y(x)=sin(x)/x", min=-15, max=15))
+g.writePDFfile("function")
+print r'\includegraphics{function}'
+\end{lstlisting}
+
+
+\section{字体}
+
+
+\section{版面设计}
+
+
+\section{标题}
+
+
+\section{表格}
+
+
+\section{列表}
+
+
+\section{数学式}
+
+
+\section{插图}
+
+
+\section{正文工具}
+
+
+\section{浮动体}
+
+
+\section{幻灯片：beamer}
+
+\subsection{tableofcontents}
+%1、列目录时，隐藏所有的小节
+%\begin{lstlisting}[language=Latex]
+%\tableofcontents[hideallsubsections]
+%\end{lstlisting}
+
+%2、自动压缩，以显示全部内容
+%\begin{lstlisting}[language=LaTeX]
+%\begin{frame}[shrink]
+%\end{lstlisting}
+%
+%3、在每一节（或小节）前增加目录
+%命令 \AtBeginSection[]{} 和 \AtBeginSubsection[]{} 。比如下面两个命令可以实现在每一节前显示文档目录，隐藏所有小节标题，并高亮当前节标题，而在每一小节前显示的目录中，只会显示本节的小节标题，并高亮当前小节标题，其他节的小节标题不显示，只显示节标题。
+%
+%
+%\begin{lstlisting}[language=LaTeX]
+%\AtBeginSection[]
+%{
+%	
+%	\begin{frame}
+%		\tableofcontents[currentsection,hideallsubsections]
+%	\end{frame}
+%	
+%	1
+%	2
+%	3
+%	
+%}
+%
+%\AtBeginSubsection[]
+%{
+%	
+%	\begin{frame}[shrink]
+%		\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+%	\end{frame}
+%	
+%	1
+%	2
+%	3
+%	
+%}
+%\end{lstlisting}
+%
+%4、frametitle的两种写法
+%\begin{lstlisting}[language=LaTeX]
+%\begin{frame}
+%	
+%	\frametitle{标题}
+%	
+%	1
+%	
+%\end{frame}
+%
+%\begin{frame}{标题}
+%	
+%\end{frame}
+%\end{lstlisting}
+%btw: 其实这些技巧在手册中都有，只是手册太长，一直没有完整的读过。结果每次都有新发现。喜欢Beamer，不单因为Beamer确实比较方便、漂亮，更重要的是Beamer的作者对于幻灯片的制作和使用有自己独到的见解。内容的组织，颜色的搭配，时间的控制，都有所涉及。让人感觉非常专业，自然产生一种信任。
+

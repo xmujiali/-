@@ -1,0 +1,180 @@
+\chapter[QC]{量子化学}
+\section{量化理论}
+
+TODO.
+
+\section{量化软件实现}
+Gaussian中提取分子积分的方法如下：
+\begin{verbatim}
+%chk=./h2.chk
+#t rhf/gen scf=conventional symm=noint noraff ExtraLinks=L316 iop(3/33=3)
+
+H2 minimal basis set
+
+0 1
+H 1. 0. 0.
+H -1. 0. 0.
+H 0. -1. 0.
+H 0. 1. 0.
+
+H 0
+S 1 1.00
+ 0.480D+00 0.100D+01
+****
+\end{verbatim}
+
+\begin{verbatim}
+ *** Overlap ***
+                1             2             3             4
+      1  0.100000D+01
+      2  0.324446D-01  0.100000D+01
+      3  0.180124D+00  0.180124D+00  0.100000D+01
+      4  0.180124D+00  0.180124D+00  0.324446D-01  0.100000D+01
+ *** Kinetic Energy ***
+                1             2             3             4
+      1  0.720000D+00
+      2 -0.300290D-01  0.720000D+00
+      3 -0.185119D-01 -0.185119D-01  0.720000D+00
+      4 -0.185119D-01 -0.185119D-01 -0.300290D-01  0.720000D+00
+
+...
+
+ ***** Potential Energy *****
+                1             2             3             4
+      1  0.211838D+01
+      2  0.680691D-01  0.211838D+01
+      3  0.372883D+00  0.372883D+00  0.211838D+01
+      4  0.372883D+00  0.372883D+00  0.680691D-01  0.211838D+01
+ ****** Core Hamiltonian ******
+                1             2             3             4
+      1 -0.139838D+01
+      2 -0.980981D-01 -0.139838D+01
+      3 -0.391395D+00 -0.391395D+00 -0.139838D+01
+      4 -0.391395D+00 -0.391395D+00 -0.980981D-01 -0.139838D+01
+
+
+...
+
+
+
+
+
+
+
+ *** Dumping Two-Electron integrals ***
+
+
+
+ ISMode= 0 Mode= 1 IBase=         1 IBasD=         1    262145
+ DBase=         0 DBasD=         0         0 IReset=         2    262139
+ IntCnt=         0 ITotal=        55 NWIIB=    262144 ISym2E=0
+ I=  4 J=  3 K=  2 L=  1 Int=  0.822923860669D-03
+ I=  4 J=  1 K=  3 L=  2 Int=  0.120330383547D-01
+ I=  4 J=  2 K=  3 L=  1 Int=  0.120330383547D-01
+ I=  4 J=  4 K=  4 L=  4 Int=  0.781764019045D+00
+ I=  4 J=  4 K=  4 L=  3 Int=  0.160685510571D-01
+ I=  4 J=  4 K=  4 L=  2 Int=  0.109126261413D+00
+ I=  4 J=  4 K=  4 L=  1 Int=  0.109126261413D+00
+ I=  4 J=  3 K=  4 L=  3 Int=  0.822923860669D-03
+ I=  4 J=  4 K=  3 L=  3 Int=  0.264532250132D+00
+ I=  4 J=  3 K=  4 L=  2 Int=  0.354055434816D-02
+ I=  4 J=  4 K=  3 L=  2 Int=  0.600780522778D-01
+ I=  4 J=  3 K=  4 L=  1 Int=  0.354055434816D-02
+ I=  4 J=  4 K=  3 L=  1 Int=  0.600780522778D-01
+ I=  4 J=  2 K=  4 L=  2 Int=  0.253639954401D-01
+ I=  4 J=  4 K=  2 L=  2 Int=  0.370879913132D+00
+ I=  4 J=  2 K=  4 L=  1 Int=  0.160685510571D-01
+ I=  4 J=  4 K=  2 L=  1 Int=  0.160685510571D-01
+ I=  4 J=  1 K=  4 L=  1 Int=  0.253639954401D-01
+ I=  4 J=  4 K=  1 L=  1 Int=  0.370879913132D+00
+ I=  4 J=  3 K=  3 L=  3 Int=  0.160685510571D-01
+ I=  4 J=  2 K=  3 L=  3 Int=  0.600780522778D-01
+ I=  4 J=  3 K=  3 L=  2 Int=  0.354055434816D-02
+ I=  4 J=  1 K=  3 L=  3 Int=  0.600780522778D-01
+ I=  4 J=  3 K=  3 L=  1 Int=  0.354055434816D-02
+ I=  4 J=  2 K=  3 L=  2 Int=  0.160685510571D-01
+ I=  4 J=  3 K=  2 L=  2 Int=  0.160685510571D-01
+ I=  4 J=  1 K=  3 L=  1 Int=  0.160685510571D-01
+ I=  4 J=  3 K=  1 L=  1 Int=  0.160685510571D-01
+ I=  4 J=  2 K=  2 L=  2 Int=  0.109126261413D+00
+ I=  4 J=  1 K=  2 L=  2 Int=  0.600780522778D-01
+ I=  4 J=  2 K=  2 L=  1 Int=  0.354055434816D-02
+ I=  4 J=  1 K=  2 L=  1 Int=  0.354055434816D-02
+ I=  4 J=  2 K=  1 L=  1 Int=  0.600780522778D-01
+ I=  4 J=  1 K=  1 L=  1 Int=  0.109126261413D+00
+ I=  3 J=  3 K=  3 L=  3 Int=  0.781764019045D+00
+ I=  3 J=  3 K=  3 L=  2 Int=  0.109126261413D+00
+ I=  3 J=  3 K=  3 L=  1 Int=  0.109126261413D+00
+ I=  3 J=  2 K=  3 L=  2 Int=  0.253639954401D-01
+ I=  3 J=  3 K=  2 L=  2 Int=  0.370879913132D+00
+ I=  3 J=  2 K=  3 L=  1 Int=  0.160685510571D-01
+ I=  3 J=  3 K=  2 L=  1 Int=  0.160685510571D-01
+ I=  3 J=  1 K=  3 L=  1 Int=  0.253639954401D-01
+ I=  3 J=  3 K=  1 L=  1 Int=  0.370879913132D+00
+ I=  3 J=  2 K=  2 L=  2 Int=  0.109126261413D+00
+ I=  3 J=  1 K=  2 L=  2 Int=  0.600780522778D-01
+ I=  3 J=  2 K=  2 L=  1 Int=  0.354055434816D-02
+ I=  3 J=  1 K=  2 L=  1 Int=  0.354055434816D-02
+ I=  3 J=  2 K=  1 L=  1 Int=  0.600780522778D-01
+ I=  3 J=  1 K=  1 L=  1 Int=  0.109126261413D+00
+ I=  2 J=  2 K=  2 L=  2 Int=  0.781764019045D+00
+ I=  2 J=  2 K=  2 L=  1 Int=  0.160685510571D-01
+ I=  2 J=  1 K=  2 L=  1 Int=  0.822923860669D-03
+ I=  2 J=  2 K=  1 L=  1 Int=  0.264532250132D+00
+ I=  2 J=  1 K=  1 L=  1 Int=  0.160685510571D-01
+ I=  1 J=  1 K=  1 L=  1 Int=  0.781764019045D+00
+\end{verbatim}
+
+
+% 下面时对pyQuante的解读，有乱码改日处理
+\section{¶ÔPyQuanteÖÐ¹ØÓÚ»ù×é»ý·Ö´úÂëµÄ×¢ÊÍ}
+\subsection{¸ÅÊö}
+ÒÔÏÂ×¢½â»ùÓÚPyQuante-1.6.5°æ±¾£¬Ô´ÎÄ¼þÎ»ÓÚÄ¿Â¼£º\verb"~\PyQuante\"¡£Ò»ÏÂ¶ÔÃ¿¸öÎÄ¼þÒÔÒ»¸ösubsection½øÐÐÌÖÂÛ¡£
+
+
+
+
+
+
+
+\subsection{PGBF.py}
+°üº¬¹ØÓÚÔ­Ê¼¸ßË¹»ùº¯ÊýµÄ»ù±¾²Ù×÷\\
+²Î¿¼ÎÄÏ×£º\\
+'Gaussian Expansion Methods for Molecular Orbitals.' H. Taketa, S. Huzinaga, and K. O-ohata. H. Phys. Soc. Japan, 21, 2313, 1966.[THO paper]
+
+
+¸ßË¹º¯ÊýµÄ¶¨ÒåÎª£º
+\begin{equation}
+g(x,y,z)=Ax^{i}y^{j}z^{k}\exp{[-a(r-r_0)^2]}
+\end{equation}
+±¾Ä£¿é°üº¬Ò»ÏÂ·½·¨£º\\
+overlap(g'): ¼ÆËãgÓëg'µÄÖØµþ¾ØÕó: Int(g*g')\\
+kinetic(g'): ¼ÆËãgÓëg'µÄ¶¯ÄÜ»ý·Ö£ºInt(G*lapl(G')), ÆäÖÐlapl±íÊ¾À­ÆÕÀ­Ë¹Ëã·û.\\
+nuclear(g',r): ¼ÆËãºËÎüÒýÄÜ»ý·Ö\\
+Int(g*(1/r)*g'). Only programmed for 1s gaussians.\\
+coulomb(g,g',g'',g'''): Compute the two-electron colombic repulsion\\
+integral Int(g(1)g'(1)(1/r12)g''(2)g'''(2)). \\
+
+
+\section{量化软件实现}
+
+\subsection{CGBF.py}
+°üº¬¹ØÓÚÊÕËõ¸ßË¹»ùº¯ÊýµÄ»ù±¾²Ù×÷
+
+
+\subsection{Ints.py}
+»ý·ÖÎÄ¼þ
+
+
+\subsection{pyints.py}
+Python implementations of work functions for Gaussian integrals in the PyQuante package.\\
+The equations herein are based upon\\
+'Gaussian Expansion Methods for Molecular Orbitals.' H. Taketa, S. Huzinaga, and K. O-ohata. H. Phys. Soc. Japan, 21, 2313, 1966.[THO paper]
+
+\section{量化软件使用心得:Gaussian}
+\subsection{Gaussian中优化不收敛的解决办法}
+
+\section{量化软件使用心得:Material Studio}
+\subsection{MS1}
+
+\end{document}
